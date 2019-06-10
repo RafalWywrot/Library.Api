@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library.Domain.Repositories
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> : IRepositorySave where T : class
     {
         IEnumerable<T> GetOverview(Func<T, bool> predicate = null);
         T GetDetail(Func<T, bool> predicate);

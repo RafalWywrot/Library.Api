@@ -11,13 +11,8 @@ namespace Library.Domain.Repositories
     {
 
     }
-    public class ArtistRepository : IArtistRepository
+    public class ArtistRepository : BaseRepository, IArtistRepository
     {
-        private LibraryDbContext context;
-        public ArtistRepository()
-        {
-            context = new LibraryDbContext();
-        }
         public void Add(Artist entity)
         {
             context.Artists.Add(entity);
@@ -25,12 +20,12 @@ namespace Library.Domain.Repositories
 
         public void Delete(Artist entity)
         {
-            throw new NotImplementedException();
+            context.Artists.Remove(entity);
         }
 
         public Artist GetDetail(Func<Artist, bool> predicate)
         {
-            throw new NotImplementedException();
+            return context.Artists.Where(predicate).FirstOrDefault(); 
         }
 
         public IEnumerable<Artist> GetOverview(Func<Artist, bool> predicate = null)
