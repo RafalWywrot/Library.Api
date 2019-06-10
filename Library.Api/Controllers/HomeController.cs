@@ -10,17 +10,19 @@ namespace Library.Api.Controllers
 {
     public class HomeController : ApiController
     {
-        private IBookService _bookService;
-        public HomeController(IBookService bookService)
+        private IBookService bookService;
+        private IArtistService artistService;
+        public HomeController(IBookService bookService, IArtistService artistService)
         {
-            _bookService = bookService;
+            this.bookService = bookService;
+            this.artistService = artistService;
         }
 
         [HttpGet]
         public IHttpActionResult Index()
         {
-            string a = _bookService.Get();
-            return Ok();
+            var artists = artistService.GetAll();
+            return Ok(artists);
         }
     }
 }
