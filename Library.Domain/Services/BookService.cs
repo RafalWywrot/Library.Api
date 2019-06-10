@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Domain.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,16 @@ namespace Library.Domain.Services
     }
     public class BookService : IBookService
     {
+        private IArtistRepository artistRepository { get; }
+        public BookService(IArtistRepository artistRepository)
+        {
+            this.artistRepository = artistRepository;
+        }
+
         public string Get()
         {
-            return "a2";
+            var b = artistRepository.GetOverview().FirstOrDefault();
+            return b.Name;
         }
     }
 }
