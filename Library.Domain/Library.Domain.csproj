@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\ArtistDTO.cs" />
+    <Compile Include="DTO\CategoryDTO.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Category.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Repositories\IRepositorySave.cs" />
     <Compile Include="Services\ArtistService.cs" />
     <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\CategoryService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
