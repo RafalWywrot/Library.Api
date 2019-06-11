@@ -1,28 +1,56 @@
-﻿using Library.Domain.Repositories;
-using System;
+﻿using AutoMapper;
+using Library.Domain.DTO;
+using Library.Domain.Entities;
+using Library.Domain.Repositories;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Domain.Services
 {
     public interface IBookService
     {
-        string Get();
+        BookSaveDTO Get(int id);
+        IList<BookDTO> GetAll();
+        void Add(BookSaveDTO bookDTO);
+        void Update(BookSaveDTO artistDTO);
+        void Remove(int id);
     }
     public class BookService : IBookService
     {
-        private IArtistRepository artistRepository { get; }
-        public BookService(IArtistRepository artistRepository)
+        private IBookRepository bookRepository { get; }
+        public BookService(IBookRepository bookRepository)
         {
-            this.artistRepository = artistRepository;
+            this.bookRepository = bookRepository;
         }
 
-        public string Get()
+        public IList<BookDTO> GetAll()
         {
-            var b = artistRepository.GetOverview().FirstOrDefault();
-            return b.Name;
+            return Mapper.Map<List<BookDTO>>(bookRepository.GetOverview().ToList());
+        }
+
+        public void Add(BookSaveDTO bookSaveDTO)
+        {
+            bookRepository.Add(Mapper.Map<Book>(bookSaveDTO));
+            bookRepository.SaveChanges();
+        }
+
+        public BookSaveDTO Get(int id)
+        {
+            return Mapper.Map<BookSaveDTO>(bookRepository.GetDetail(x => x.Id == id));
+        }
+
+        public void Update(BookSaveDTO bookSaveDto)
+        {
+            var book = bookRepository.GetDetail(x => x.Id == bookSaveDto.Id);
+            Mapper.Map<BookSaveDTO, Book>(bookSaveDto, book);
+            bookRepository.SaveChanges();
+        }
+
+        public void Remove(int id)
+        {
+            var book = bookRepository.GetDetail(x => x.Id == id);
+            bookRepository.Delete(book);
+            bookRepository.SaveChanges();
         }
     }
 }
