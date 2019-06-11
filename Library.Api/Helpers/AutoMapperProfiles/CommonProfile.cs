@@ -11,6 +11,8 @@ namespace Library.Api.Helpers.AutoMapperProfiles
             CreateMap<Entity.Artist, Dto.ArtistDTO>().ReverseMap();
             CreateMap<Entity.PublishHouse, Dto.PublishHouseDTO>().ReverseMap();
             CreateMap<Entity.Category, Dto.CategoryDTO>().ReverseMap();
+            CreateMap<Entity.Book, Dto.BookDTO>();
+            CreateMap<Dto.BookSaveDTO, Entity.Book>().ReverseMap();
         }
     }
 }
