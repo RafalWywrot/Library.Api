@@ -68,6 +68,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositorySave.cs" />
+    <Compile Include="Repositories\PublishHouseRepository.cs" />
     <Compile Include="Services\ArtistService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\CategoryService.cs" />
