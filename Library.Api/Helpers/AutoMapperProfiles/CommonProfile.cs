@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using Entity = Library.Domain.Entities;
 using Dto = Library.Domain.DTO;
 
@@ -9,6 +9,7 @@ namespace Library.Api.Helpers.AutoMapperProfiles
         public CommonProfile()
         {
             CreateMap<Entity.Artist, Dto.ArtistDTO>().ReverseMap();
+            CreateMap<Entity.PublishHouse, Dto.PublishHouseDTO>().ReverseMap();
             CreateMap<Entity.Category, Dto.CategoryDTO>().ReverseMap();
         }
     }
