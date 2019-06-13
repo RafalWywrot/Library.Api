@@ -10,7 +10,6 @@ namespace Library.Domain.Repositories
     }
     public class RentRepository : BaseRepository, IRentRepository
     {
-
         public void Add(Rent entity)
         {
             context.Rents.Add(entity);

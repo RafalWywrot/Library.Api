@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 Library\.Api/Views/PublishHouse/desktop\.ini
+
+Library\.Api/Views/Rent/desktop\.ini

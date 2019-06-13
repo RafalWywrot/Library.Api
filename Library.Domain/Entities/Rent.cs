@@ -14,7 +14,7 @@ namespace Library.Domain.Entities
         public bool Status { get; set; }
         public int Name { get; set; }
         public int Surname { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
     }
 }
