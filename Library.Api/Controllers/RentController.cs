@@ -1,6 +1,7 @@
 ﻿using Library.Api.Helpers;
 using Library.Domain.DTO;
 using Library.Domain.Services;
+using System;
 using System.Web.Http;
 
 namespace Library.Api.Controllers
@@ -20,23 +21,24 @@ namespace Library.Api.Controllers
             var rents = rentService.GetAll();
             return Ok(rents);
         }
-        //[HttpPost]
-        //public IHttpActionResult New(BookSaveDTO bookDto)
-        //{
-        //    bookService.Add(bookDto);
-        //    return Ok();
-        //}
-        //[HttpGet]
-        //public IHttpActionResult GetById(int id)
-        //{
-        //    var book = bookService.Get(id);
-        //    return Ok(book);
-        //}
-        //[HttpPost]
-        //public IHttpActionResult Update(BookSaveDTO bookDto)
-        //{
-        //    bookService.Update(bookDto);
-        //    return Ok();
-        //}
+        [HttpPost]
+        public IHttpActionResult New(RentDTO rentDto)
+        {
+            rentDto.From = DateTime.Now;
+            rentService.Add(rentDto);
+            return Ok();
+        }
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            var rent = rentService.Get(id);
+            return Ok(rent);
+        }
+        [HttpPost]
+        public IHttpActionResult EndRent(RentDTO rentDto)
+        {
+            rentService.EndRent(rentDto);
+            return Ok();
+        }
     }
 }

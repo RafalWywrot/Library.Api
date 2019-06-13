@@ -2,6 +2,7 @@
 using Library.Domain.DTO;
 using Library.Domain.Entities;
 using Library.Domain.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,8 +12,8 @@ namespace Library.Domain.Services
     {
         RentDTO Get(int id);
         IList<RentDTO> GetAll();
-        void Add(RentDTO artistDTO);
-        void Update(RentDTO artistDTO);
+        void Add(RentDTO rentDTO);
+        void EndRent(RentDTO rentDTO);
     }
     public class RentService : IRentService
     {
@@ -29,8 +30,7 @@ namespace Library.Domain.Services
 
         public IList<RentDTO> GetAll()
         {
-            var a = rentRepository.GetOverview();
-            return Mapper.Map<List<RentDTO>>(rentRepository.GetOverview());
+            return Mapper.Map<List<RentDTO>>(rentRepository.GetOverview().ToList());
         }
 
         public void Add(RentDTO rentDTO)
@@ -39,10 +39,11 @@ namespace Library.Domain.Services
             rentRepository.SaveChanges();
         }
 
-        public void Update(RentDTO rentDTO)
+        public void EndRent(RentDTO rentDTO)
         {
             var rent = rentRepository.GetDetail(x => x.Id == rentDTO.Id);
-            Mapper.Map<RentDTO, Rent>(rentDTO, rent);
+            rent.Available = true;
+            rent.To = DateTime.Now;
             rentRepository.SaveChanges();
         }
     }

@@ -10,9 +10,9 @@ namespace Library.Domain.DTO
     {
         public int Id { get; set; }
         public BookDTO Book { get; set; }
-        public bool Status { get; set; }
-        public int Name { get; set; }
-        public int Surname { get; set; }
+        public bool Available { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
     }
