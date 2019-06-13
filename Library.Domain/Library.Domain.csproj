@@ -55,14 +55,20 @@
     <Compile Include="DTO\BookSaveDTO.cs" />
     <Compile Include="DTO\CategoryDTO.cs" />
     <Compile Include="DTO\PublishHouseDTO.cs" />
+    <Compile Include="DTO\RentDTO.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\PublishHouse.cs" />
+    <Compile Include="Entities\Rent.cs" />
     <Compile Include="LibraryDbContext.cs" />
     <Compile Include="Migrations\201906101731209_initialize book, category, publishhouse, artist tables.cs" />
     <Compile Include="Migrations\201906101731209_initialize book, category, publishhouse, artist tables.Designer.cs">
       <DependentUpon>201906101731209_initialize book, category, publishhouse, artist tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131439513_Rent table.cs" />
+    <Compile Include="Migrations\201906131439513_Rent table.Designer.cs">
+      <DependentUpon>201906131439513_Rent table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,10 +79,12 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositorySave.cs" />
     <Compile Include="Repositories\PublishHouseRepository.cs" />
+    <Compile Include="Repositories\RentRepository.cs" />
     <Compile Include="Services\ArtistService.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\PublishHouseService.cs" />
+    <Compile Include="Services\RentService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -86,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906101731209_initialize book, category, publishhouse, artist tables.resx">
       <DependentUpon>201906101731209_initialize book, category, publishhouse, artist tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131439513_Rent table.resx">
+      <DependentUpon>201906131439513_Rent table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

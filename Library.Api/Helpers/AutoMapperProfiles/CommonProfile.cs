@@ -13,6 +13,7 @@ namespace Library.Api.Helpers.AutoMapperProfiles
             CreateMap<Entity.Category, Dto.CategoryDTO>().ReverseMap();
             CreateMap<Entity.Book, Dto.BookDTO>();
             CreateMap<Dto.BookSaveDTO, Entity.Book>().ReverseMap();
+            CreateMap<Entity.Rent, Dto.RentDTO>().ReverseMap();
         }
     }
 }

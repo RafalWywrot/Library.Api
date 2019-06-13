@@ -20,5 +20,6 @@ namespace Library.Domain
         public DbSet<Category> Categories { get; set; }
         public DbSet<PublishHouse> PublishHouses { get; set; }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Rent> Rents { get; set; }
     }
 }
