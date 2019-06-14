@@ -11,7 +11,6 @@ namespace Library.Api.Controllers
         private IRentService rentService;
         public RentController(IRentService rentService)
         {
-            
             this.rentService = rentService;
         }
 
@@ -21,6 +20,7 @@ namespace Library.Api.Controllers
             var rents = rentService.GetAll();
             return Ok(rents);
         }
+
         [HttpPost]
         public IHttpActionResult New(RentDTO rentDto)
         {
@@ -28,16 +28,18 @@ namespace Library.Api.Controllers
             rentService.Add(rentDto);
             return Ok();
         }
+
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
             var rent = rentService.Get(id);
             return Ok(rent);
         }
+
         [HttpPost]
-        public IHttpActionResult EndRent(RentDTO rentDto)
+        public IHttpActionResult Remove(EntityId entity)
         {
-            rentService.EndRent(rentDto);
+            rentService.Remove(entity.Id);
             return Ok();
         }
     }

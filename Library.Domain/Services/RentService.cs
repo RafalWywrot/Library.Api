@@ -13,7 +13,7 @@ namespace Library.Domain.Services
         RentDTO Get(int id);
         IList<RentDTO> GetAll();
         void Add(RentDTO rentDTO);
-        void EndRent(RentDTO rentDTO);
+        void Remove(int id);
     }
     public class RentService : IRentService
     {
@@ -39,11 +39,10 @@ namespace Library.Domain.Services
             rentRepository.SaveChanges();
         }
 
-        public void EndRent(RentDTO rentDTO)
+        public void Remove(int id)
         {
-            var rent = rentRepository.GetDetail(x => x.Id == rentDTO.Id);
-            rent.Available = true;
-            rent.To = DateTime.Now;
+            var rent = rentRepository.GetDetail(x => x.BookId == id);
+            rentRepository.Delete(rent);
             rentRepository.SaveChanges();
         }
     }
