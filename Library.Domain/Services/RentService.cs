@@ -12,7 +12,7 @@ namespace Library.Domain.Services
     {
         RentDTO Get(int id);
         IList<RentDTO> GetAll();
-        void Add(RentDTO rentDTO);
+        void Add(RentSaveDTO rentDTO);
         void Remove(int id);
     }
     public class RentService : IRentService
@@ -33,7 +33,7 @@ namespace Library.Domain.Services
             return Mapper.Map<List<RentDTO>>(rentRepository.GetOverview().ToList());
         }
 
-        public void Add(RentDTO rentDTO)
+        public void Add(RentSaveDTO rentDTO)
         {
             rentRepository.Add(Mapper.Map<Rent>(rentDTO));
             rentRepository.SaveChanges();

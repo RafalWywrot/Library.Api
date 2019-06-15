@@ -22,18 +22,11 @@ namespace Library.Api.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult New(RentDTO rentDto)
+        public IHttpActionResult New(RentSaveDTO rentDto)
         {
             rentDto.From = DateTime.Now;
             rentService.Add(rentDto);
             return Ok();
-        }
-
-        [HttpGet]
-        public IHttpActionResult GetById(int id)
-        {
-            var rent = rentService.Get(id);
-            return Ok(rent);
         }
 
         [HttpPost]

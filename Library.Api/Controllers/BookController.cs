@@ -1,15 +1,20 @@
 ﻿using Library.Api.Helpers;
 using Library.Domain.DTO;
 using Library.Domain.Services;
+using System.Linq;
 using System.Web.Http;
 namespace Library.Api.Controllers
 {
     public class BookController : ApiController
     {
         private IBookService bookService;
-        public BookController(IBookService bookService)
+
+        private IRentService rentService { get; }
+
+        public BookController(IBookService bookService, IRentService rentService)
         {
             this.bookService = bookService;
+            this.rentService = rentService;
         }
 
         [HttpGet]
@@ -17,6 +22,16 @@ namespace Library.Api.Controllers
         {
             var books = bookService.GetAll();
             return Ok(books);
+        }
+        /// <summary>
+        /// return not rented books
+        /// </summary>
+        [HttpGet]
+        public IHttpActionResult GetAvailableBooks()
+        {
+            var books = bookService.GetAll();
+            var rents = rentService.GetAll().Select(x => x.Book.Id).ToList();
+            return Ok(books.Where(book => !rents.Contains(book.Id)));
         }
         [HttpPost]
         public IHttpActionResult New(BookSaveDTO bookDto)
