@@ -12,6 +12,7 @@ namespace Library.Domain.DTO
         public int BookId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Contact { get; set; }
         public DateTime? From { get; set; }
     }
 }
